@@ -5,6 +5,7 @@
  */
 package com.draco.buoy.utils
 
+import android.util.Log
 import android.content.ContentResolver
 import android.content.Context
 import android.provider.Settings
@@ -65,10 +66,12 @@ class BatterySaverManager(private val context: Context) {
      * Get the raw battery saver constants secure setting
      */
     fun getConstantsString(): String? {
-        return Settings.Global.getString(
+        val c = Settings.Global.getString(
             contentResolver,
             BatterySaverSecureSettings.BATTERY_SAVER_CONSTANTS
         )
+        Log.e("boy", ""+c)
+        return c;
     }
 
     fun apply(config: BatterySaverConstantsConfig?, saveProfilePref: Boolean = true) {

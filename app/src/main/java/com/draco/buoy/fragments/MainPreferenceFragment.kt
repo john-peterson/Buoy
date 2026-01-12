@@ -5,6 +5,7 @@
  */
 package com.draco.buoy.fragments
 
+import android.util.Log
 import android.content.*
 import android.net.Uri
 import android.os.Build
@@ -99,7 +100,7 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnS
         restore = findPreference(getString(R.string.pref_config_key_restore))!!
 
         refreshSettings()
-        lockSettings()
+        // lockSettings()
 
         /* Alert the user that LPM is not enabled */
         if (!batterySaverManager.getLowPower())
@@ -190,6 +191,7 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnS
      * Update the UI to show the new constants
      */
     private fun refreshSettings() {
+        Log.e("boy", "refreshSettings")
         /* Take existing constants and apply to the default config as overrides */
         val currentProfileString = batterySaverManager.getConstantsString()
         val currentProfile = BatterySaverConstantsConfig().also {
@@ -227,7 +229,8 @@ class MainPreferenceFragment : PreferenceFragmentCompat(), SharedPreferences.OnS
             quickDozeEnabled,
             restore
         ).forEach {
-            it.isEnabled = profile != Profile.DEFAULT
+            // it.isEnabled = profile != Profile.DEFAULT
+            it.isEnabled = true
         }
 
         advertiseIsEnabled.isChecked = currentProfile.advertiseIsEnabled

@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         preferences = binding.preferences
 
         /* If we are missing a permission, lock the user in the permission activity */
-        if (!PermissionUtils.isPermissionsGranted(this, android.Manifest.permission.WRITE_SECURE_SETTINGS))
-            goToPermissionActivity()
+        // if (!PermissionUtils.isPermissionsGranted(this, android.Manifest.permission.WRITE_SECURE_SETTINGS))
+            // goToPermissionActivity()
 
         supportFragmentManager
             .beginTransaction()
